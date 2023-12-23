@@ -10,4 +10,15 @@ public class Exercise {
         this.repetitions = repetitions;
         this.duration = duration;
     }
+
+    @Override
+    public String toString() {
+        return "    {" + "\n" +
+                "      \"exerciseName\": \"" + exerciseName + "\"," + "\n" +
+                "      \"repetitions\": \"" + repetitions + "\"," + "\n" +
+                "      \"duration\": \"" + duration + "\"" + "\n" +
+                "    },";
+    }
 }
+
+

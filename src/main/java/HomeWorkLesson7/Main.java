@@ -3,10 +3,12 @@ package HomeWorkLesson7;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 
 public class Main {
     public static void main(String[] args) {
+        Data<Meal, Exercise> data = new Data<>();
+        Pagination pagination = new Pagination(10, 20, 30);
+
         Meal meal1 = new Meal("Cheese toasts", "Breakfast", 15);
         Meal meal2 = new Meal("Caesar salad", "Lunch", 30);
         Meal meal3 = new Meal("Lasagna", "Dinner", 45);
@@ -14,24 +16,26 @@ public class Main {
         Exercise exercise1  = new Exercise("Warm-up", 1, 1);
         Exercise exercise2  = new Exercise("Squats", 20, 70);
 
-        Pagination pagination = new Pagination(10, 20, 30);
+        data.setMeal(meal1);
+        data.setMeal(meal2);
+        data.setMeal(meal3);
+        data.setExercise(exercise1);
+        data.setExercise(exercise2);
 
-        List<Meal> dataMeal = new ArrayList<>();
-        dataMeal.add(meal1);
-        dataMeal.add(meal2);
-        dataMeal.add(meal3);
+        SearchResult<Data, Pagination> searchResult = new SearchResult<>();
+        searchResult.setResult(data, pagination);
+        System.out.println(searchResult.getResult());
 
-        List<Exercise> dataExercise = new ArrayList<>();
-        dataExercise.add(exercise1);
-        dataExercise.add(exercise2);
+        System.out.println();
+        System.out.println("*** Meal sorting by cooking time ***");
+        System.out.println();
 
-        SearchResult<Objects> searchResult = new SearchResult<>();
-        searchResult.setResult(dataMeal);
-        searchResult.setResult(pagination);
+        List<Meal> list = new ArrayList<>();
+        list.add(meal2);
+        list.add(meal3);
+        list.add(meal1);
 
-        Collections.sort(dataMeal);
-        dataMeal.forEach(System.out::println);
-
+        Collections.sort(list);
+        list.forEach(System.out::println);
     }
-
 }

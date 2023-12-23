@@ -1,17 +1,11 @@
 package HomeWorkLesson7;
 
-import java.util.List;
-
-public class SearchResult <E>{
-    private E result;
-    public void setResult (List<Meal> result) {
-        this.result = (E) result;
+public class SearchResult <T, V>{
+    private String string = "";
+    public String getResult() {
+        return string;
     }
-    public E getResult() {
-        return result;
-    }
-
-    public void setResult(Pagination pagination) {
-        this.result = (E) result;
+    public void setResult (T t, V v){
+        this.string = "{" + this.string + "\n" + t.toString() + "\n" + v.toString() + "\n" + "}";
     }
 }
