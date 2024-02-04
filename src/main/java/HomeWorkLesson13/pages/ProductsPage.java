@@ -1,6 +1,7 @@
 package HomeWorkLesson13.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import io.qameta.allure.Step;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
@@ -16,22 +17,27 @@ public class ProductsPage {
     private final SelenideElement cartBadge = $x("//span[@class='shopping_cart_badge']");
     private final SelenideElement cartButton = $x("//a[@class='shopping_cart_link']");
 
+    @Step("Add to cart first product")
     public ProductsPage clickAddToCartButtonPrice1() {
         addToCartButtonPrice1.click();
         return this;
     }
+    @Step("Add to cart second product")
     public ProductsPage clickAddToCartButtonPrice2() {
         addToCartButtonPrice2.click();
         return this;
     }
+    @Step("Check products page open")
     public ProductsPage checkProductsPageOpen() {
         webdriver().shouldHave(url(productsPageLink));
         return this;
     }
+    @Step("Check cart adding")
     public ProductsPage checkCartAdding() {
         cartBadge.shouldHave(visible);
         return this;
     }
+    @Step("Click cart button")
     public ProductsPage clickCartButton() {
         cartButton.click();
         return this;
