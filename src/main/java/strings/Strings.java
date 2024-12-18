@@ -93,7 +93,7 @@ public class Strings {
     public static String isValidHexa6(String hexa) {
         Pattern hexa6 = Pattern.compile("^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$");
         Matcher matcher = hexa6.matcher(hexa);
-        if (matcher.matches() == true) {
+        if (matcher.matches()) {
             return "valid";
         } else {
             return "invalid";
@@ -103,7 +103,7 @@ public class Strings {
     public static String isValidHexa3(String hexa) {
         Pattern hexa3 = Pattern.compile("^#([0-9a-fA-F]{3}){1,2}$");
         Matcher matcher = hexa3.matcher(hexa);
-        if (matcher.matches() == true) {
+        if (matcher.matches()) {
             return "valid";
         } else {
             return "invalid";
@@ -114,7 +114,7 @@ public class Strings {
         String regex = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|\\d{16})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(cardNumber);
-        if (matcher.matches() == true) {
+        if (matcher.matches()) {
             return "valid";
         } else {
             return "invalid";
