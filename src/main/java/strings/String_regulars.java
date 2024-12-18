@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Strings {
+public class String_regulars {
     public static void main(String[] args) {
 //        1.    Input: https://www.google.com/search?q=java
 //              Output: google.com
@@ -65,20 +65,41 @@ public class Strings {
 
         System.out.println("7. " + input7_1 + " - " + isValidCreditCard(input7_1) + ", " + input7_2 + " - " + isValidCreditCard(input7_2));
 
-
 //        8.    Input: "Love #Java and #Regex!"
 //              Output: ["#Java", "#Regex"]
 
         String input8 = "Love #Java and #Regex!";
 
         List<String> hashtags = new ArrayList<>();
-        Pattern pattern = Pattern.compile("#\\w+");
-        Matcher matcher = pattern.matcher(input8);
+        Pattern pattern8 = Pattern.compile("#\\w+");
+        Matcher matcher8 = pattern8.matcher(input8);
 
-        while (matcher.find()) {
-            hashtags.add(matcher.group());
+        while (matcher8.find()) {
+            hashtags.add(matcher8.group());
         }
         System.out.println("8. " + hashtags);
+
+//         9.    Ensure the password has at least one uppercase letter, one lowercase letter,
+//               one digit, and one special character, and is at least 8 characters long.
+
+        String input9_1 = "Password123!";
+        String input9_2 = "password123";
+
+        System.out.println("9. " + input9_1 + " - " + isValidPassword(input9_1) + ", " + input9_2 + " - " + isValidPassword(input9_2));
+
+//         10.   Input: "There are 3 cats and 5 dogs."
+//               Output: [3, 5]
+
+        String input10 = "There are 3 cats and 5 dogs.";
+
+        List<Integer> numbers = new ArrayList<>();
+        Pattern pattern10 = Pattern.compile("\\d+");
+        Matcher matcher10 = pattern10.matcher(input10);
+
+        while (matcher10.find()) {
+            numbers.add(Integer.parseInt(matcher10.group()));
+        }
+        System.out.println("10. " + numbers);
 
     }
     public static String isValid(String date) {
@@ -114,6 +135,17 @@ public class Strings {
         String regex = "^(\\d{4}-\\d{4}-\\d{4}-\\d{4}|\\d{16})$";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(cardNumber);
+        if (matcher.matches()) {
+            return "valid";
+        } else {
+            return "invalid";
+        }
+    }
+
+    public static String isValidPassword(String password) {
+        String regex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(password);
         if (matcher.matches()) {
             return "valid";
         } else {
